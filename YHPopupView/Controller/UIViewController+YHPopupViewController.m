@@ -17,7 +17,7 @@
 
 @interface UIViewController ()<UIGestureRecognizerDelegate>
 
-@property(nonatomic, retain) UIView *popupView;
+@property(nonatomic, retain) UIView *yh_popupView;
 @property(nonatomic, retain) UIView *overlayView;
 @property(nonatomic, retain) id<YHPopupAnimation> popupAnimation;
 
@@ -27,7 +27,7 @@
 
 
 #pragma mark - inline property
-- (UIView *)popupView {
+- (UIView *)yh_popupView {
     return objc_getAssociatedObject(self, kYHPopupView);
 }
 
@@ -66,7 +66,7 @@
 
 - (void)dismissPopupView {
     [self.overlayView removeFromSuperview];
-    [self.popupView removeFromSuperview];
+    [self.yh_popupView removeFromSuperview];
     self.overlayView = nil;
     self.popupView = nil;
     self.popupAnimation = nil;
@@ -75,7 +75,7 @@
 - (void)dismissPopupViewWithAnimation:(id<YHPopupAnimation>)animation {
     if (animation) {
         __weak __typeof(&*self)weakSelf = self;
-        [animation dismissView:self.popupView overlayView:self.overlayView completion:^(void) {
+        [animation dismissView:self.yh_popupView overlayView:self.overlayView completion:^(void) {
             [weakSelf dismissPopupView];
         }];
     }else{
@@ -92,8 +92,8 @@
     if ([self.overlayView.subviews containsObject:popupView]) {
         return;
     }
-    self.popupView = nil;
-    self.popupView = popupView;
+    self.yh_popupView = nil;
+    self.yh_popupView = popupView;
     self.popupAnimation = nil;
     
     UIView *sourceView = [self topView];

@@ -19,7 +19,7 @@
 
 @interface UIViewController (YYPopupViewController)
 
-@property (nonatomic, retain, readonly) UIView *popupView;
+@property (nonatomic, retain, readonly) UIView *yh_popupView;
 @property (nonatomic, retain, readonly) UIView *overlayView;
 @property (nonatomic, retain, readonly) id<YHPopupAnimation> popupAnimation;
 
